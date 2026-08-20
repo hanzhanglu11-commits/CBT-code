@@ -20,6 +20,24 @@ This repository contains the datasets and Colab notebooks used to evaluate Base,
 | `11_recompute_single_turn_lexical_metrics.ipynb`            | Recomputes BLEU, ROUGE-1, ROUGE-2, and ROUGE-L for all four model configurations. This notebook adds the previously missing RAG lexical-overlap results and does not perform LLM-as-a-Judge evaluation. |
 | `cbt_synthetic_multiturn_dataset_2000.json`                 | Contains the 2,000 synthetic multi-turn CBT-oriented dialogues used for CBT-specific fine-tuning.                                                                                                       |
 
+
+
+
+## Authoritative Results and Result Provenance
+
+The outputs stored in some earlier notebooks were generated during preliminary or exploratory evaluation runs. Therefore, they may not exactly match the final values reported in the dissertation.
+
+For the final single-turn results, the following notebooks should be treated as the authoritative sources:
+
+* The final **RAG-only LLM-as-a-Judge scores** are determined by `09_recompute_single_turn_rag_judge_temperature_0.ipynb`.
+* The final **FT+RAG LLM-as-a-Judge scores** are determined by `10_recompute_single_turn_ft_rag_judge_temperature_0.ipynb`.
+* The final **BLEU and ROUGE scores for all four model configurations** are determined by `11_recompute_single_turn_lexical_metrics.ipynb`.
+* The final **Base and FT LLM-as-a-Judge scores** are taken from `01_single_turn_base_ft_evaluation.ipynb`.
+
+The RAG-only and FT+RAG judge scores were recomputed over the same fixed set of 100 single-turn responses using Claude Sonnet 4.5, the same evaluation prompt and scoring rubric, and `temperature=0`.
+
+If any cached output in an earlier notebook differs from the values produced by the corresponding recomputation notebook, the recomputed values take precedence. The dissertation tables and reported conclusions use these authoritative recomputed results.
+
 ## Recomputed Single-Turn LLM-as-a-Judge Results
 
 The RAG-only and FT+RAG single-turn scores reported in the dissertation use the controlled recomputations in notebooks `09` and `10`. These values supersede the preliminary cached judge outputs that may appear in the earlier evaluation notebooks.
